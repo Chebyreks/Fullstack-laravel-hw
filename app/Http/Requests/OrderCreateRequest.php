@@ -11,7 +11,7 @@ class OrderCreateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,9 +22,7 @@ class OrderCreateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'user_id'=> ['required', 'string', 'exists:user,id'],
-            'sum_price'=> ['required', 'integer'],
-            'delivery_agent_id'=> ['required', 'string', 'exists:delivery_agent,id']
+            'delivery_agent_id'=> ['required', 'string', 'exists:delivery_agents,id']
         ];
     }
 }

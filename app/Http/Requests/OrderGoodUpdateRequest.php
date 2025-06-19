@@ -11,7 +11,7 @@ class OrderGoodUpdateRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -23,8 +23,8 @@ class OrderGoodUpdateRequest extends FormRequest
     {
         return [
             'price'=> ['required', 'integer'],
-            'good_id'=> ['required', 'string', 'exists:good,id'],
-            'order_id'=> ['required', 'string', 'exists:order,id'],
+            'good_id'=> ['required', 'string', 'exists:goods,id'],
+            'order_id'=> ['required', 'string', 'exists:orders,id'],
         ];
     }
 }

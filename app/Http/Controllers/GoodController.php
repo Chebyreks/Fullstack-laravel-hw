@@ -8,23 +8,27 @@ use App\Http\Requests\GoodUpdateRequest;
 use App\Models\Good;
 class GoodController extends Controller
 {
+    public function create()
+    {
+        return view('pages.admin.good.create');
+    }
     public function index() 
     {
         $goods = Good::all();
-        return view('pages.good.index', compact('goods'));
+        return view('pages.admin.good.index', compact('goods'));
     }
 
     public function show(Good $good_)
     {  
         $good = Good::where('id', $good_->id);
-        return view('pages.good.show', compact('good'));
+        return view('pages.admin.good.show', compact('good'));
     }
 
     public function store(GoodCreateRequest $request) 
     {
         $data = $request->validated();
         $good = Good::create($data);
-        return redirect(route('good.index'));
+        return redirect(route('admin.good.index'));
     }
 
     public function update(GoodUpdateRequest $request, Good $good)
@@ -32,12 +36,12 @@ class GoodController extends Controller
         $data = $request->validated();
         $good->fill($data);
         $good->saveOrFail();
-        return redirect(route('good.show', $good));
+        return redirect(route('admin.good.index'));
     }
 
     public function destroy(Good $good)
     {
         $good->deleteOrFail();
-        return redirect(route('good.index'));
+        return redirect(route('admin.good.index'));
     }
 }

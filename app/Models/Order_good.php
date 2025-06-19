@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Order_good extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'price',
         'good_id',

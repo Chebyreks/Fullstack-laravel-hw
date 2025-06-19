@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Order extends Model
 {
+    public $timestamps = false;
     protected $fillable = [
         'user_id',
         'sum_price',
@@ -26,6 +27,6 @@ class Order extends Model
 
     public function delivery_agent(): BelongsTo
     {
-        return $this->belongsTo(Delivery_agent::class);
+        return $this->belongsTo(DeliveryAgent::class);
     }
 }
